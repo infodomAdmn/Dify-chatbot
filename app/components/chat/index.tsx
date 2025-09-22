@@ -170,8 +170,8 @@ const Chat: FC<IChatProps> = ({
       </div>
       {
         !isHideSendInput && (
-          <div className='fixed z-10 inset-x-0 bottom-0 mx-auto pc:w-[794px] tablet:w-[794px] max-w-full mobile:w-full px-3.5'>
-            <div className='p-[5.5px] max-h-[150px] bg-white border-[1.5px] border-gray-200 rounded-xl overflow-y-auto'>
+          <div className='fixed z-10 inset-x-0 bottom-6 mobile:bottom-4 mx-auto pc:w-[794px] tablet:w-[794px] max-w-full mobile:w-full px-3.5'>
+            <div className='p-[5.5px] max-h-[150px] bg-white border-[1.5px] border-gray-200 rounded-xl overflow-y-auto shadow-lg'>
               {
                 visionConfig?.enabled && (
                   <>
@@ -228,7 +228,7 @@ const Chat: FC<IChatProps> = ({
                     </div>
                   }
                 >
-                  <div className={`${s.sendBtn} w-8 h-8 cursor-pointer rounded-md`} onClick={handleSend}></div>
+                  <div className={`${s.sendBtn} ${s.aiGlow} w-8 h-8 cursor-pointer rounded-md`} onClick={handleSend}></div>
                 </Tooltip>
               </div>
             </div>

@@ -89,3 +89,37 @@
 .textArea:focus+div .sendBtn {
   background-image: url(./icons/send-active.svg);
 }
+
+/* Subtle AI glow/pulse for the send button */
+.aiGlow {
+  position: relative;
+}
+
+.aiGlow::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 10px;
+  background: radial-gradient(60% 60% at 50% 50%, rgba(59, 130, 246, 0.35) 0%, rgba(59, 130, 246, 0) 70%);
+  filter: blur(4px);
+  opacity: 0.6;
+  animation: aiPulse 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes aiPulse {
+  0% {
+    opacity: 0.35;
+    transform: scale(0.98);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+
+  100% {
+    opacity: 0.35;
+    transform: scale(0.98);
+  }
+}
