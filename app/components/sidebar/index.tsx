@@ -41,7 +41,7 @@ const Sidebar: FC<ISidebarProps> = ({
         <div className="flex flex-col space-y-2">
           <Button
             onClick={() => setShowQr(true)}
-            className="group w-full !justify-center !h-9 text-gray-700 bg-gray-50 hover:bg-gray-100 border border-gray-200 text-sm"
+            className="mobile:hidden group w-full !justify-center !h-9 text-gray-700 bg-gray-50 hover:bg-gray-100 border border-gray-200 text-sm"
           >
             Prebaci na mobitel
           </Button>
@@ -113,6 +113,10 @@ const Sidebar: FC<ISidebarProps> = ({
       {/* <a className="flex flex-shrink-0 p-4" href="https://langgenius.ai/" target="_blank">
         <Card><div className="flex flex-row items-center"><ChatBubbleOvalLeftEllipsisSolidIcon className="text-primary-600 h-6 w-6 mr-2" /><span>LangGenius</span></div></Card>
       </a> */}
+      <div className="px-4 pb-3 text-[11px] leading-snug text-gray-500">
+        Odgovore generira umjetna inteligencija i mogu biti netočni.
+        Kontinuirano radimo na unapređenju točnosti odgovora.
+      </div>
       <div className="flex flex-shrink-0 pr-4 pb-4 pl-4">
         <div className="text-gray-400 font-normal text-xs">© {copyRight} {(new Date()).getFullYear()}</div>
       </div>
