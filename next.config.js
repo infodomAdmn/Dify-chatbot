@@ -17,6 +17,44 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   output: 'standalone',
+  async headers() {
+    const csp = [
+      "default-src 'self'",
+      // Allow scripts (dev uses eval; Monaco/Workers may need blob)
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https:",
+      // Inline styles are used by Next/Tailwind during SSR hydration
+      "style-src 'self' 'unsafe-inline' https:",
+      // Images from self, https, data URLs, and blobs
+      "img-src 'self' data: blob: https:",
+      // Fonts
+      "font-src 'self' data: https:",
+      // XHR/SSE/WebSocket endpoints
+      "connect-src 'self' https: wss:",
+      // Frames if needed (e.g., OAuth providers); restrict to https by default
+      "frame-src 'self' https:",
+      // Web workers / Monaco uses blob workers
+      "worker-src 'self' blob:",
+      // Disallow plugins
+      "object-src 'none'",
+      // Mitigations
+      "base-uri 'self'",
+      "form-action 'self'",
+      // Auto-upgrade http assets on https sites
+      'upgrade-insecure-requests',
+    ].join('; ')
+
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: csp,
+          },
+        ],
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

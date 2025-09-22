@@ -1,12 +1,12 @@
 const translation = {
   common: {
-    welcome: 'Dobrodošli! Na pitanja o proizvodima odgovara',
+    welcome: 'Trebate pomoć? Naš AI asistent je tu za vas.',
     appUnavailable: 'Aplikacija nije dostupna',
     appUnkonwError: 'Aplikacija nije dostupna.',
   },
   chat: {
     newChat: 'Novi razgovor',
-    newChatDefaultName: 'Nova konverzacija',
+    newChatDefaultName: 'Novi razgovor',
     openingStatementTitle: 'Uvodna izjava',
     powerBy: '',
     prompt: 'Upit',
