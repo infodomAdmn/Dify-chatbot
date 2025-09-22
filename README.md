@@ -9,7 +9,7 @@ Create a file named `.env.local` in the current directory and copy the contents 
 NEXT_PUBLIC_APP_ID=
 
 # APP API Key: This is the key used to authenticate your app's API requests. 
-# You can generate it on the app's "API Access" page by clicking the "API Key" button in the top-right corner.
+# You can generate it on the app's "API Access"  page by clicking the "API Key" button in the top-right corner.
 NEXT_PUBLIC_APP_KEY=
 
 # APP URL: This is the API's base URL. If you're using the Dify cloud service, set it to: https://api.dify.ai/v1.
