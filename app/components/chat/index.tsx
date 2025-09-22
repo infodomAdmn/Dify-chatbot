@@ -171,7 +171,7 @@ const Chat: FC<IChatProps> = ({
       {
         !isHideSendInput && (
           <div className='fixed z-10 inset-x-0 bottom-6 mobile:bottom-4 mx-auto pc:w-[794px] tablet:w-[794px] max-w-full mobile:w-full px-3.5'>
-            <div className={`p-[5.5px] max-h-[150px] bg-white rounded-xl overflow-y-auto shadow-lg ${s.aiBorder} ${isResponding ? s.aiBorderActive : ''}`}>
+            <div className={`p-[5.5px] max-h-[150px] bg-white rounded-xl overflow-hidden shadow-lg ${s.aiBorder} ${isResponding ? s.aiBorderActive : ''}`}>
               {
                 visionConfig?.enabled && (
                   <>
@@ -208,7 +208,7 @@ const Chat: FC<IChatProps> = ({
               }
               <Textarea
                 className={`
-                  block w-full px-2 pr-[118px] py-[7px] leading-5 max-h-none text-base text-gray-700 outline-none appearance-none resize-none
+                  block w-full px-2 pr-[118px] py-[7px] leading-5 max-h-none text-base text-gray-700 outline-none appearance-none resize-none overflow-hidden whitespace-pre-wrap break-words
                   ${visionConfig?.enabled && 'pl-12'}
                 `}
                 value={query}
