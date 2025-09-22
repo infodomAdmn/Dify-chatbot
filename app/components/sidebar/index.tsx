@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
@@ -31,31 +31,52 @@ const Sidebar: FC<ISidebarProps> = ({
   list,
 }) => {
   const { t } = useTranslation()
+  const [showQr, setShowQr] = useState(false)
   return (
     <div
       className="shrink-0 flex flex-col overflow-y-auto bg-white pc:w-[244px] tablet:w-[192px] mobile:w-[240px]  border-r border-gray-200 tablet:h-[calc(100vh_-_3rem)] mobile:h-screen"
     >
-      {/* QR code with current URL, hidden on mobile, styled for desktop/tablet */}
-      <div className="mobile:hidden px-4 pt-4">
-        <div className="rounded-lg border border-gray-200 bg-white shadow-sm p-3">
-          <div className="flex items-center space-x-3">
-            <QRCode size={88} className="rounded-md border border-gray-100" />
-            <div className="text-xs text-gray-500 leading-snug">
-              <div className="font-medium text-gray-800">AI Asistent 2025</div>
-              <div className="text-gray-500">Podijeli link skeniranjem QR koda.</div>
-            </div>
-          </div>
+      {/* Actions: Switch to mobile (opens QR modal) and New Chat */}
+      <div className="px-4 pt-4">
+        <div className="flex flex-col space-y-2">
+          <Button
+            onClick={() => setShowQr(true)}
+            className="group w-full !justify-center !h-9 text-gray-700 bg-gray-50 hover:bg-gray-100 border border-gray-200 text-sm"
+          >
+            Prebaci na mobitel
+          </Button>
+          {list.length < MAX_CONVERSATION_LENTH && (
+            <Button
+              onClick={() => { onCurrentIdChange('-1') }}
+              className="group block w-full flex-shrink-0 !justify-start !h-9 text-primary-600 items-center text-sm"
+            >
+              <PencilSquareIcon className="mr-2 h-4 w-4" /> {t('app.chat.newChat')}
+            </Button>
+          )}
         </div>
       </div>
 
-      {list.length < MAX_CONVERSATION_LENTH && (
-        <div className="flex flex-shrink-0 p-4 !pb-0">
-          <Button
-            onClick={() => { onCurrentIdChange('-1') }}
-            className="group block w-full flex-shrink-0 !justify-start !h-9 text-primary-600 items-center text-sm"
-          >
-            <PencilSquareIcon className="mr-2 h-4 w-4" /> {t('app.chat.newChat')}
-          </Button>
+      {showQr && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ backgroundColor: 'rgba(16,24,40,0.4)' }}>
+          <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-sm mx-4 p-5">
+            <button
+              aria-label="Zatvori"
+              onClick={() => setShowQr(false)}
+              className="absolute top-3 right-3 h-8 w-8 rounded-md border border-gray-200 text-gray-500 hover:bg-gray-100"
+            >
+              ✕
+            </button>
+            <div className="text-base font-semibold text-gray-900 mb-1">Otvorite razgovor na mobitelu</div>
+            <div className="text-sm text-gray-600 mb-4">
+              Skenirajte ovaj QR kôd kamerom ili aplikacijom za skeniranje. Otvorit će se ista stranica na vašem mobitelu kako biste mogli nastaviti razgovor u hodu.
+            </div>
+            <div className="flex items-center justify-center">
+              <QRCode size={220} className="rounded-lg border border-gray-200" />
+            </div>
+            <div className="mt-4 text-xs text-gray-500">
+              Savjet: Ako se QR ne učita, pokušajte ponovno ili kopirajte link iz adresne trake.
+            </div>
+          </div>
         </div>
       )}
 
