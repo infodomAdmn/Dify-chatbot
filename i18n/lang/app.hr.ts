@@ -1,6 +1,6 @@
 const translation = {
   common: {
-    welcome: 'Trebate pomoć? Naš AI asistent je tu za vas.',
+    welcome: 'Trebate pomoć? Za Vas je na raspolaganju',
     appUnavailable: 'Aplikacija nije dostupna',
     appUnkonwError: 'Aplikacija nije dostupna.',
   },
