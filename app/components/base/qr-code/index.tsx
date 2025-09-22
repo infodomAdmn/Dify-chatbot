@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
 interface QRCodeProps {
     size?: number
@@ -9,6 +9,7 @@ interface QRCodeProps {
 
 export default function QRCode({ size = 128, className }: QRCodeProps) {
     const [url, setUrl] = useState('')
+    const [providerIndex, setProviderIndex] = useState(0)
 
     useEffect(() => {
         // window is available client-side
@@ -17,21 +18,33 @@ export default function QRCode({ size = 128, className }: QRCodeProps) {
 
     const src = useMemo(() => {
         const data = encodeURIComponent(url || '')
-        // Using a lightweight external QR API to avoid extra deps
-        return `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${data}`
-    }, [url, size])
+        const providers = [
+            `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${data}`,
+            `https://quickchart.io/qr?text=${data}&size=${size}`,
+        ]
+        return providers[providerIndex] || providers[0]
+    }, [url, size, providerIndex])
 
-    if (!url)
-        return null
+    const handleError = useCallback(() => {
+        setProviderIndex(prev => (prev + 1) % 2)
+    }, [])
 
     return (
-        <img
-            src={src}
-            alt="QR"
-            width={size}
-            height={size}
-            className={className}
-        />
+        <div
+            className={`inline-flex items-center justify-center bg-white ${className || ''}`}
+            style={{ width: size, height: size }}
+        >
+            {url && (
+                <img
+                    src={src}
+                    alt="QR"
+                    width={size}
+                    height={size}
+                    className="block"
+                    onError={handleError}
+                />
+            )}
+        </div>
     )
 }
 
