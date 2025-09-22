@@ -39,12 +39,14 @@ const Sidebar: FC<ISidebarProps> = ({
       {/* Actions: Switch to mobile (opens QR modal) and New Chat */}
       <div className="px-4 pt-4">
         <div className="flex flex-col space-y-2">
-          <Button
-            onClick={() => setShowQr(true)}
-            className="mobile:hidden group w-full !justify-center !h-9 text-gray-700 bg-gray-50 hover:bg-gray-100 border border-gray-200 text-sm"
-          >
-            Prebaci na mobitel
-          </Button>
+          <div className="hidden tablet:block">
+            <Button
+              onClick={() => setShowQr(true)}
+              className="group w-full !justify-center !h-9 text-gray-700 bg-gray-50 hover:bg-gray-100 border border-gray-200 text-sm"
+            >
+              Prebaci na mobitel
+            </Button>
+          </div>
           {list.length < MAX_CONVERSATION_LENTH && (
             <Button
               onClick={() => { onCurrentIdChange('-1') }}
