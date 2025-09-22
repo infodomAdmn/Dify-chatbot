@@ -2,7 +2,7 @@ const translation = {
   common: {
     welcome: 'Dobrodošli! Na pitanja o proizvodima odgovara',
     appUnavailable: 'Aplikacija nije dostupna',
-    appUnkonwError: 'Aplikacija nije dostupna',
+    appUnkonwError: 'Aplikacija nije dostupna.',
   },
   chat: {
     newChat: 'Novi razgovor',
