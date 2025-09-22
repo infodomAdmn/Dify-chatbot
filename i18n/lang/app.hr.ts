@@ -1,6 +1,6 @@
 const translation = {
   common: {
-    welcome: 'Dobrodošli u korištenje',
+    welcome: 'Dobrodošli! Na pitanja o proizvodima odgovara',
     appUnavailable: 'Aplikacija nije dostupna',
     appUnkonwError: 'Aplikacija nije dostupna',
   },
@@ -15,7 +15,7 @@ const translation = {
     configStatusDes: 'Prije početka možete urediti postavke razgovora',
     configDisabled:
         'Postavke iz prethodne sesije korištene su za ovu sesiju.',
-    startChat: 'Započni razgovor',
+    startChat: ' Započni',
     privacyPolicyLeft:
         'Molimo pročitajte ',
     privacyPolicyMiddle:
