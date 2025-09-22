@@ -8,7 +8,7 @@ const translation = {
     newChat: 'Novi razgovor',
     newChatDefaultName: 'Nova konverzacija',
     openingStatementTitle: 'Uvodna izjava',
-    powerBy: 'Pokreće',
+    powerBy: '',
     prompt: 'Upit',
     privatePromptConfigTitle: 'Postavke razgovora',
     publicPromptConfigTitle: 'Početni upit',
