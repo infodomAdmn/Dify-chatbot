@@ -7,6 +7,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChatBubbleOvalLeftEllipsisIcon as ChatBubbleOvalLeftEllipsisSolidIcon } from '@heroicons/react/24/solid'
 import Button from '@/app/components/base/button'
+import QRCode from '@/app/components/base/qr-code'
 // import Card from './card'
 import type { ConversationItem } from '@/types/app'
 
@@ -34,6 +35,19 @@ const Sidebar: FC<ISidebarProps> = ({
     <div
       className="shrink-0 flex flex-col overflow-y-auto bg-white pc:w-[244px] tablet:w-[192px] mobile:w-[240px]  border-r border-gray-200 tablet:h-[calc(100vh_-_3rem)] mobile:h-screen"
     >
+      {/* QR code with current URL, hidden on mobile, styled for desktop/tablet */}
+      <div className="mobile:hidden px-4 pt-4">
+        <div className="rounded-lg border border-gray-200 bg-white shadow-sm p-3">
+          <div className="flex items-center space-x-3">
+            <QRCode size={88} className="rounded-md border border-gray-100" />
+            <div className="text-xs text-gray-500 leading-snug">
+              <div className="font-medium text-gray-800">AI Asistent 2025</div>
+              <div className="text-gray-500">Podijeli link skeniranjem QR koda.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {list.length < MAX_CONVERSATION_LENTH && (
         <div className="flex flex-shrink-0 p-4 !pb-0">
           <Button
